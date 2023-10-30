@@ -3,12 +3,12 @@ import axios from 'axios';
 
 const url = 'http://localhost:3000/api/v1/greetings/random_greeting';
 
-export const fetchRandomGreetings = createAsyncThunk('messages/fetchRandomGreetings', async (thunkAPI) => {
+export const fetchRandomGreetings = createAsyncThunk('messages/fetchRandomGreetings', async () => {
   try {
     const response = await axios.get(url);
     return response.data;
   } catch (error) {
-    return thunkAPI.rejectWithValue('Sorry, something went wrong!');
+    throw Error(error);
   }
 });
 
@@ -17,7 +17,7 @@ const initialState = {
   isLoading: false,
 };
 
-const messagesSlice = createSlice({
+const greetingsSlice = createSlice({
   name: 'messageList',
   initialState,
   reducers: {},
@@ -28,13 +28,13 @@ const messagesSlice = createSlice({
       })
       .addCase(fetchRandomGreetings.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.messages = action.payload.message;
+        state.messages = action.payload;
       })
       .addCase(fetchRandomGreetings.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action.error.message; // Store the error message in the state
+        state.error = action.error.message;
       });
   },
 });
 
-export default messagesSlice.reducer;
+export default greetingsSlice.reducer;

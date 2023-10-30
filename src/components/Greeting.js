@@ -22,8 +22,8 @@ const Greeting = () => {
     <div>
       <h1>
         Random Message:
-        { messages }
       </h1>
+      <p>{ messages.message }</p>
     </div>
   );
 };

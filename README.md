@@ -103,14 +103,6 @@ To run the project, execute the following command:
   npm start
 ```
 
-### Test <a name="test"></a>
-
-To test the project, execute the following command:
-
-```
-  rspec src/spec/
-```
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- AUTHORS -->
