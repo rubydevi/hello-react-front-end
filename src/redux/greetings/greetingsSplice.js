@@ -23,17 +23,20 @@ const greetingsSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchRandomGreetings.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(fetchRandomGreetings.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.messages = action.payload;
-      })
-      .addCase(fetchRandomGreetings.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.error.message;
-      });
+      .addCase(fetchRandomGreetings.pending, (state) => ({
+        ...state,
+        isLoading: true,
+      }))
+      .addCase(fetchRandomGreetings.fulfilled, (state, action) => ({
+        ...state,
+        isLoading: false,
+        messages: action.payload,
+      }))
+      .addCase(fetchRandomGreetings.rejected, (state, action) => ({
+        ...state,
+        isLoading: false,
+        error: action.error.message,
+      }));
   },
 });
 
