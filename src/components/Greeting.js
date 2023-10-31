@@ -19,11 +19,15 @@ const Greeting = () => {
   }
 
   return (
-    <div>
-      <h1>
+    <div className="container">
+      <h1 className="label">
         Random Message:
       </h1>
-      <p>{ messages.message }</p>
+      <span className="text-success">
+        &quot;
+        { messages.message }
+        &quot;
+      </span>
     </div>
   );
 };
